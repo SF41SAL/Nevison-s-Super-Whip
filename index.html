@@ -60,33 +60,54 @@
       font-size: 1.3rem;
     }
 
+    /* Navigation Changes Start Here */
     nav {
       background: var(--primary);
       color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 15px 20px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-container {
+      display: flex;
+      width: 100%;
+      max-width: 1100px;
+      justify-content: center;
       position: relative;
     }
 
-
-    nav .nav-links {
+    .nav-links {
       display: flex;
+      justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: 600;
+      padding: 5px 10px;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .menu-toggle {
       display: none;
       font-size: 1.6rem;
       cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
+    /* Navigation Changes End Here */
 
     section {
       padding: 60px 20px;
@@ -228,29 +249,58 @@
 
     /* Mobile Styles */
     @media (max-width: 600px) {
-    header h1 {
-      font-size: 2rem;
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .about, .contact {
+        padding: 20px 15px;
+      }
+      
+      #about {
+        margin-top: 60px; /* Fix: offset for mobile nav overlap */
+      }
+      
+      header {
+        background-size: contain !important; /* improve mobile fit */
+        background-position: center;
+      }
+      
+      /* Navigation Mobile Changes Start Here */
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      nav a {
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+      }
+      /* Navigation Mobile Changes End Here */
     }
-    nav a {
-      display: block;
-      margin: 10px 0;
-    }
-    .about, .contact {
-      padding: 20px 15px;
-    }
-    #about {
-      margin-top: 60px; /* Fix: offset for mobile nav overlap */
-    }
-    header {
-      background-size: contain !important; /* improve mobile fit */
-      background-position: center;
-    }
-  }
 
-  @media (min-width: 768px) {
-    /* [no changes to your existing desktop styles] */
-  }
-</style>
+    @media (min-width: 768px) {
+      /* [no changes to your existing desktop styles] */
+    }
+  </style>
 </head>
 <body>
 
@@ -260,13 +310,15 @@
   </header>
 
   <nav>
-    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
-    <div class="nav-links" id="nav-links">
-      <a href="#about">About Us</a>
-      <a href="#flavors">Our Treats</a>
-      <a href="#events">Events</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#social-media">Social Media</a>
+    <div class="nav-container">
+      <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About Us</a>
+        <a href="#flavors">Our Treats</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#social-media">Social Media</a>
+      </div>
     </div>
   </nav>
 
@@ -310,7 +362,7 @@
         <img src="birthdays.PNG" alt="Birthday">
         <div>
           <strong>Birthday Parties:</strong>
-          Make your child’s birthday unforgettable with our whimsical van, custom cones, and themed treats. We even play birthday songs!
+          Make your child's birthday unforgettable with our whimsical van, custom cones, and themed treats. We even play birthday songs!
         </div>
       </li>
       <li>
@@ -331,7 +383,7 @@
         <img src="festivals.PNG" alt="Community">
         <div>
           <strong>Community Events:</strong>
-          Whether it’s school fairs, local galas, or summer festivals — we’re the local favourite with something for everyone.
+          Whether it's school fairs, local galas, or summer festivals — we're the local favourite with something for everyone.
         </div>
       </li>
     </ul>
@@ -355,7 +407,7 @@
 
   <section id="social-media" class="social">
     <h2>Follow Us on Social Media</h2>
-    <p>See where we’re scooping today and get your daily dose of sweetness!</p>
+    <p>See where we're scooping today and get your daily dose of sweetness!</p>
     <p>
       <a href="https://www.facebook.com/share/15ptL449GT/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-square"></i></a>
       <a href="https://www.tiktok.com/@nevisonssuperwhip" target="_blank"><i class="fab fa-tiktok"></i></a>
