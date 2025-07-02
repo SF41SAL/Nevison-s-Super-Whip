@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nevison's Super Whip</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
-      --primary: #f05bb4;
-      --accent: #ffaec0;
-      --background: #fff0f6;
+      --pink: #fbc4d9;
+      --mint: #c8f3e2;
+      --cream: #fff9d8;
+      --lilac: #e4d4ff;
       --text: #333;
     }
 
@@ -18,243 +17,191 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--cream);
       color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      background: url('bg-top.png') center center no-repeat;
-      background-size: contain;
+      background: url('bg-top.png') no-repeat center center;
+      background-size: cover;
       color: white;
       text-align: center;
-      padding: 180px 20px 100px;
+      padding: 100px 20px 60px;
       position: relative;
     }
 
     header::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.2);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.3); /* dimming */
       z-index: 0;
     }
 
     header h1, header p {
       position: relative;
       z-index: 1;
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     }
 
     header h1 {
-      font-size: 3.2rem;
-      margin-bottom: 15px;
+      font-size: 3rem;
+      margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     nav {
-      background: var(--primary);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      position: relative;
-    }
-
-    nav .nav-links {
-      display: flex;
-      gap: 20px;
+      background: var(--lilac);
+      text-align: center;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
     nav a {
-      color: white;
+      margin: 0 10px;
       text-decoration: none;
-      font-weight: 600;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.6rem;
-      cursor: pointer;
+      color: var(--text);
+      font-weight: bold;
+      font-size: 1rem;
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 1100px;
+      padding: 40px 20px;
+      max-width: 1000px;
       margin: auto;
     }
 
-    h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      color: var(--primary);
-    }
-
-    .about, .contact {
-      background: var(--background);
-      border-radius: 20px;
-      padding: 40px 30px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    .about {
+      margin-top: 20px;
     }
 
     .flavors {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 30px;
+      gap: 20px;
     }
 
     .flavor-card {
-      background: #ffffff;
-      border-radius: 16px;
+      background: var(--mint);
+      border-radius: 15px;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease;
-    }
-
-    .flavor-card:hover {
-      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .flavor-card img {
       width: 100%;
       height: auto;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    .flavor-card h3 {
-      font-size: 1.2rem;
-      color: var(--primary);
+      border-radius: 10px;
       margin-bottom: 10px;
     }
 
-    ul.events {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul.events li {
-      display: flex;
-      align-items: center;
-      margin: 25px 0;
-    }
-
-    ul.events img {
-      width: 100px;
-      height: 100px;
-      margin-right: 20px;
+    .about, .contact {
+      background: var(--pink);
       border-radius: 12px;
-      object-fit: cover;
-    }
-
-    ul.events div {
-      max-width: 800px;
-    }
-
-    ul.events strong {
-      font-size: 1.1rem;
-      color: var(--primary);
-      display: block;
-      margin-bottom: 5px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .contact form {
       display: flex;
       flex-direction: column;
       gap: 15px;
-      max-width: 600px;
+      max-width: 500px;
       margin: auto;
     }
 
-    .contact input,
-    .contact textarea {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+    .contact input, .contact textarea {
+      padding: 10px;
       font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
     }
 
     .contact button {
-      background: var(--primary);
-      color: white;
+      background: var(--lilac);
+      color: var(--text);
       border: none;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 12px;
       border-radius: 30px;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.2s;
     }
 
     .contact button:hover {
-      background: #d84a9b;
+      background: #d3bfff;
     }
 
     .social {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
-    .social a {
-      color: var(--primary);
-      margin: 0 20px;
-      font-size: 2.4rem;
-      transition: transform 0.2s;
-    }
-
-    .social a:hover {
-      transform: scale(1.2);
+    .social a img {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      vertical-align: middle;
     }
 
     footer {
-      background: var(--primary);
-      color: white;
+      background: var(--lilac);
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
+    ul.events li {
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    ul.events img {
+      width: 80px;
+      height: 80px;
+      margin-right: 15px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 70px 15px 40px;
+        background-position: center top;
+      }
+
       header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
 
-      .menu-toggle {
+      header p {
+        font-size: 1rem;
+      }
+
+      nav a {
         display: block;
-        color: white;
+        margin: 10px 0;
       }
 
-      .nav-links {
-        flex-direction: column;
-        gap: 15px;
-        background: var(--primary);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        display: none;
-      }
-
-      .nav-links.active {
-        display: flex;
+      ul.events {
+        padding-left: 0;
       }
 
       ul.events li {
         flex-direction: column;
-        align-items: center;
         text-align: center;
       }
 
@@ -265,96 +212,67 @@
   </style>
 </head>
 <body>
-
   <header>
     <h1>Nevison's Super Whip</h1>
     <p>Family-run ice cream business serving smiles in Darlington!</p>
   </header>
 
   <nav>
-    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
-    <div class="nav-links" id="nav-links">
-      <a href="#about">About Us</a>
-      <a href="#flavors">Our Treats</a>
-      <a href="#events">Events</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#social-media">Social Media</a>
-    </div>
+    <a href="#about">About Us</a>
+    <a href="#flavors">Our Treats</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="#social">Social Media</a>
   </nav>
 
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p><strong>Nevison's Super Whip</strong> is a beloved, family-run ice cream business bringing joy across Darlington and beyond. With a history steeped in community spirit and the sweetest of memories, we specialise in soft whip ice cream, fun and fruity ice lollies, rich hard scoop flavours, and our iconic lemon-topped treats.</p>
-    <p>From casual park days to grand celebrations, we pride ourselves on quality, cheerfulness, and service that feels like a scoop of sunshine. Our colourful van is a welcome sight for kids and grown-ups alike — bringing delicious nostalgia and fresh flavours to every event.</p>
+    <p><strong>Nevison's Super Whip</strong> is a warm, family-run ice cream business based in Darlington, UK. With a love for tradition and community, we bring joy and nostalgia through soft whip ice cream, colourful ice lollies, premium hard scoop flavours, and our signature lemon-topped cones. Whether you spot our van on your street or book us for a celebration, our goal is simple: spread smiles, one scoop at a time.</p>
   </section>
 
   <section id="flavors">
-    <h2>Our Treats</h2>
+    <h2 style="text-align:center;">Our Treats</h2>
     <div class="flavors">
       <div class="flavor-card">
         <img src="soft whipped.jpg" alt="Soft Whip Ice Cream">
         <h3>Soft Whip Ice Cream</h3>
-        <p>Classic, creamy, and perfect in a cone or tub!</p>
+        <p>Classic and creamy — the perfect swirl in a cone or tub.</p>
       </div>
       <div class="flavor-card">
         <img src="ice lollies.jpg" alt="Ice Lollies">
         <h3>Ice Lollies</h3>
-        <p>Colourful, fruity, and perfect for sunny days.</p>
+        <p>Fun, fruity, and colourful. A kid's favourite!</p>
       </div>
       <div class="flavor-card">
         <img src="hard-scoop-ice-cream.jpg" alt="Hard Scoop">
         <h3>Hard Scoop Ice Cream</h3>
-        <p>Traditional hard scoops with indulgent flavours and textures.</p>
+        <p>Premium traditional scoops in a variety of rich flavours.</p>
       </div>
       <div class="flavor-card">
-        <img src="lemon top.jpg" alt="Lemon-Topped">
-        <h3>Lemon-Topped</h3>
-        <p>The North East's favourite — tangy lemon sorbet over smooth vanilla.</p>
+        <img src="lemon top.jpg" alt="Lemon Topped">
+        <h3>Lemon-Topped Cones</h3>
+        <p>Creamy vanilla topped with zingy lemon sorbet – a regional classic.</p>
       </div>
     </div>
   </section>
 
   <section id="events" class="about">
     <h2>Events & Occasions</h2>
-    <p>We bring flavour, fun, and freshness to events of all types!</p>
+    <p>We make your events even sweeter! Our fully-equipped ice cream van brings flavour, fun, and a nostalgic vibe to all occasions:</p>
     <ul class="events">
-      <li>
-        <img src="birthdays.PNG" alt="Birthday">
-        <div>
-          <strong>Birthday Parties:</strong>
-          Make your child’s birthday unforgettable with our whimsical van, custom cones, and themed treats. We even play birthday songs!
-        </div>
-      </li>
-      <li>
-        <img src="weddings.PNG" alt="Wedding">
-        <div>
-          <strong>Weddings:</strong>
-          Add a charming, nostalgic touch to your big day. We serve delightful ice creams that double as unique wedding favours!
-        </div>
-      </li>
-      <li>
-        <img src="corporate.PNG" alt="Corporate">
-        <div>
-          <strong>Corporate Events:</strong>
-          Boost morale and brand reputation by offering employees or clients a delicious reward. Perfect for team-building days or customer promos.
-        </div>
-      </li>
-      <li>
-        <img src="festivals.PNG" alt="Community">
-        <div>
-          <strong>Community Events:</strong>
-          Whether it’s school fairs, local galas, or summer festivals — we’re the local favourite with something for everyone.
-        </div>
-      </li>
+      <li><img src="birthdays.PNG" alt="Birthday"><strong>Birthday Parties:</strong> Treat your guests to a delicious surprise with soft whip, sprinkles, and smiles all around.</li>
+      <li><img src="weddings.PNG" alt="Wedding"><strong>Weddings:</strong> Add a delightful, vintage touch with our charming ice cream van — perfect for photos and sweet memories.</li>
+      <li><img src="corporate.PNG" alt="Corporate"><strong>Corporate Events:</strong> Reward staff or impress clients with a unique and fun refreshment experience.</li>
+      <li><img src="festivals.PNG" alt="Community"><strong>Community Festivals:</strong> We’re a hit at school fairs, summer fetes, and local fundraisers. Reliable, friendly, and always ready to scoop!</li>
     </ul>
   </section>
 
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <form action="#" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="phone" placeholder="Phone Number" />
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Phone Number">
       <textarea name="message" rows="5" placeholder="Tell us about your event or enquiry" required></textarea>
       <button type="submit">Send Message</button>
     </form>
@@ -365,26 +283,21 @@
     </div>
   </section>
 
-  <section id="social-media" class="social">
+  <section id="social" class="social">
     <h2>Follow Us on Social Media</h2>
-    <p>See where we’re scooping today and get your daily dose of sweetness!</p>
+    <p>Catch all our latest scoops, events, and fun videos!</p>
     <p>
-      <a href="https://www.facebook.com/share/15ptL449GT/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-square"></i></a>
-      <a href="https://www.tiktok.com/@nevisonssuperwhip" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/share/15ptL449GT/?mibextid=wwXIfr" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Logo">
+      </a>
+      <a href="https://www.tiktok.com/@nevisonssuperwhip" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok Logo">
+      </a>
     </p>
   </section>
 
   <footer>
     &copy; 2025 Nevison's Super Whip • Family-run since day one • Serving joy one scoop at a time
   </footer>
-
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
-
 </body>
 </html>
