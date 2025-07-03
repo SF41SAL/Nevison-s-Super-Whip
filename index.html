@@ -29,8 +29,8 @@
     }
 
     header {
-      background: linear-gradient(rgba(240, 91, 180, 0.8), url('bg-top.png') center center no-repeat;
-      background-size: cover;
+      background: url('bg-top.png') center center no-repeat;
+      background-size: contain;
       color: white;
       text-align: center;
       padding: 180px 20px 100px;
@@ -41,7 +41,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255, 240, 246, 0.85); /* Pink background overlay */
+      background: rgba(0, 0, 0, 0.2);
       z-index: 0;
     }
 
@@ -54,15 +54,13 @@
     header h1 {
       font-size: 3.2rem;
       margin-bottom: 15px;
-      color: var(--primary); /* Pink text to match */
     }
 
     header p {
       font-size: 1.3rem;
-      color: var(--primary); /* Pink text to match */
-      font-weight: 600;
     }
 
+    /* Navigation Changes Start Here */
     nav {
       background: var(--primary);
       color: white;
@@ -109,6 +107,7 @@
       top: 50%;
       transform: translateY(-50%);
     }
+    /* Navigation Changes End Here */
 
     section {
       padding: 60px 20px;
@@ -259,14 +258,15 @@
       }
       
       #about {
-        margin-top: 60px;
+        margin-top: 60px; /* Fix: offset for mobile nav overlap */
       }
       
       header {
-        background-size: contain !important;
+        background-size: contain !important; /* improve mobile fit */
         background-position: center;
       }
       
+      /* Navigation Mobile Changes Start Here */
       .menu-toggle {
         display: block;
       }
@@ -294,10 +294,11 @@
         padding: 10px;
         margin: 0;
       }
+      /* Navigation Mobile Changes End Here */
     }
 
     @media (min-width: 768px) {
-      /* Desktop styles remain unchanged */
+      /* [no changes to your existing desktop styles] */
     }
   </style>
 </head>
