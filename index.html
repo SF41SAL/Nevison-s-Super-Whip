@@ -376,10 +376,21 @@
       align-items: center;
     }
 
+    /* Fixed footer logo styling */
     .footer-logo {
       height: 80px;
       margin-bottom: 15px;
-      filter: brightness(0) invert(1);
+      /* Remove problematic filter */
+      /* Add white border for visibility */
+      border: 3px solid white;
+      border-radius: 15px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-text {
+      max-width: 800px;
+      margin: 10px auto;
     }
 
     @media (max-width: 768px) {
@@ -456,6 +467,10 @@
       
       .about, .contact {
         padding: 25px 20px;
+      }
+      
+      .footer-logo {
+        height: 70px;
       }
     }
   </style>
@@ -595,8 +610,10 @@
   <footer>
     <div class="footer-content">
       <img src="logo.png" alt="Nevison's Super Whip Logo" class="footer-logo">
-      <p>&copy; 2025 Nevison's Super Whip • Family-run since day one • Serving joy one scoop at a time</p>
-      <p>Professional ice cream catering for corporate events, summer festivals, and school fairs throughout Darlington</p>
+      <div class="footer-text">
+        <p>&copy; 2025 Nevison's Super Whip • Family-run since day one • Serving joy one scoop at a time</p>
+        <p>Professional ice cream catering for corporate events, summer festivals, and school fairs throughout Darlington</p>
+      </div>
     </div>
   </footer>
 
