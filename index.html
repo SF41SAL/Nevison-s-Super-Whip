@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nevison's Super Whip</title>
+  <title>Nevison's Super Whip - Premium Event Ice Cream Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -28,61 +28,66 @@
       line-height: 1.6;
     }
 
+    /* Logo and top bar - Updated */
     .top-bar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 20px 40px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      background: var(--background);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
     }
 
     .top-bar img {
       height: 135px;
       width: auto;
       max-width: 100%;
+      transition: transform 0.3s ease;
     }
 
-    .blinking-message {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--primary);
-      animation: blink 1.2s infinite;
-      margin-left: 20px;
+    .top-bar img:hover {
+      transform: scale(1.05);
+    }
+
+    /* New headline styling */
+    .headline {
       flex: 1;
-      text-align: right;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .headline-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1px;
+      animation: blink 2s infinite;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.8);
+      display: inline-block;
     }
 
     @keyframes blink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      50% { opacity: 0.7; }
     }
 
-    @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .blinking-message {
-        text-align: center;
-        margin-left: 0;
-        font-size: 1rem;
-      }
-
-      .top-bar img {
-        height: auto;
-        max-height: 120px;
-      }
-    }
-
+    /* Hero section */
     .hero {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       padding: 60px 40px 40px;
-      background: #fff0f6;
+      background: linear-gradient(to right, #fff0f6, #ffeef5, #fff0f6);
     }
 
     .hero-text {
@@ -109,9 +114,11 @@
     .hero-img img {
       max-width: 100%;
       border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border: 5px solid white;
     }
 
+    /* Navigation */
     nav {
       background: var(--primary);
       color: white;
@@ -140,13 +147,14 @@
       color: white;
       text-decoration: none;
       font-weight: 600;
-      padding: 5px 10px;
-      transition: background 0.3s;
-      border-radius: 4px;
+      padding: 8px 15px;
+      transition: all 0.3s;
+      border-radius: 30px;
     }
 
     nav a:hover {
       background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
     }
 
     .menu-toggle {
@@ -157,6 +165,7 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
+      color: white;
     }
 
     section {
@@ -170,6 +179,17 @@
       font-size: 2.2rem;
       margin-bottom: 30px;
       color: var(--primary);
+      position: relative;
+    }
+
+    h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 15px auto;
+      border-radius: 2px;
     }
 
     .about, .contact {
@@ -191,24 +211,51 @@
       padding: 20px;
       text-align: center;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flavor-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
 
     .flavor-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .flavor-card:hover:before {
+      transform: scaleX(1);
     }
 
     .flavor-card img {
       width: 100%;
-      height: auto;
+      height: 200px;
+      object-fit: cover;
       border-radius: 12px;
       margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .flavor-card:hover img {
+      transform: scale(1.05);
     }
 
     .flavor-card h3 {
       font-size: 1.2rem;
       color: var(--primary);
       margin-bottom: 10px;
+      font-weight: 700;
     }
 
     ul.events {
@@ -220,6 +267,15 @@
       display: flex;
       align-items: center;
       margin: 25px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    ul.events li:hover {
+      transform: translateY(-5px);
     }
 
     ul.events img {
@@ -228,6 +284,7 @@
       margin-right: 20px;
       border-radius: 12px;
       object-fit: cover;
+      border: 3px solid var(--accent);
     }
 
     ul.events div {
@@ -251,10 +308,18 @@
 
     .contact input,
     .contact textarea {
-      padding: 12px;
+      padding: 12px 15px;
       border-radius: 10px;
-      border: 1px solid #ccc;
+      border: 2px solid #eee;
       font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      border-color: var(--primary);
+      outline: none;
     }
 
     .contact button {
@@ -262,15 +327,19 @@
       color: white;
       border: none;
       padding: 14px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: bold;
       border-radius: 30px;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      letter-spacing: 1px;
     }
 
     .contact button:hover {
       background: #d84a9b;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(240, 91, 180, 0.4);
     }
 
     .social {
@@ -282,29 +351,65 @@
       color: var(--primary);
       margin: 0 20px;
       font-size: 2.4rem;
-      transition: transform 0.2s;
+      transition: all 0.3s;
+      display: inline-block;
     }
 
     .social a:hover {
-      transform: scale(1.2);
+      transform: scale(1.2) rotate(5deg);
+      color: #d84a9b;
     }
 
     footer {
       background: var(--primary);
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 30px 20px;
       font-size: 0.9rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-logo {
+      height: 80px;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1);
     }
 
     @media (max-width: 768px) {
       .hero {
         flex-direction: column;
         text-align: center;
+        padding: 40px 20px;
       }
 
       .hero-text {
         padding: 0 0 30px;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .logo-container {
+        margin-bottom: 20px;
+      }
+      
+      .top-bar img {
+        height: 110px;
+      }
+      
+      .headline-text {
+        font-size: 1.3rem;
+        padding: 8px 15px;
       }
 
       .menu-toggle {
@@ -334,15 +439,38 @@
         padding: 10px;
         margin: 0;
       }
+      
+      ul.events li {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      ul.events img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      section {
+        padding: 40px 15px;
+      }
+      
+      .about, .contact {
+        padding: 25px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Updated top bar with headline -->
   <div class="top-bar">
-    <img src="logo.png" alt="Logo">
-    <div class="blinking-message">
-      Now booking for corporate events, summer festivals, school fairs & more!
+    <div class="logo-container">
+      <img src="logo.png" alt="Nevison's Super Whip Logo">
+    </div>
+    <div class="headline">
+      <div class="headline-text">
+        🎉 BOOK NOW FOR CORPORATE EVENTS, SUMMER FESTIVALS & SCHOOL FAIRS! 🎪
+      </div>
     </div>
   </div>
 
@@ -350,14 +478,14 @@
     <div class="hero-text">
       <h1>Nevison's Super Whip</h1>
       <p>Family-run ice cream business serving smiles in Darlington!</p>
+      <div style="margin-top: 30px;">
+        <a href="#contact" style="display: inline-block; background: var(--primary); color: white; text-decoration: none; padding: 12px 30px; border-radius: 30px; font-weight: 600; transition: all 0.3s;">Book Your Event Today!</a>
+      </div>
     </div>
     <div class="hero-img">
-      <img src="bg-top.png" alt="Ice Cream Image">
+      <img src="bg-top.png" alt="Ice Cream Van at an Event">
     </div>
   </div>
-
-  <!-- rest of your code is unchanged -->
-  <!-- navigation, sections, footer, etc. follow below this line (same as previous version) -->
 
   <nav>
     <div class="nav-container">
@@ -372,14 +500,121 @@
     </div>
   </nav>
 
-  <!-- Rest of the sections remain as provided in the last version -->
-  <!-- [about], [flavors], [events], [contact], [social-media], [footer] are unchanged -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p><strong>Nevison's Super Whip</strong> is a beloved, family-run ice cream business bringing joy across Darlington and beyond. With a history steeped in community spirit and the sweetest of memories, we specialise in soft whip ice cream, fun and fruity ice lollies, rich hard scoop flavours, and our iconic lemon-topped treats.</p>
+    <p>From casual park days to grand celebrations, we pride ourselves on quality, cheerfulness, and service that feels like a scoop of sunshine. Our colourful van is a welcome sight for kids and grown-ups alike — bringing delicious nostalgia and fresh flavours to every event.</p>
+  </section>
+
+  <section id="flavors">
+    <h2>Our Treats</h2>
+    <div class="flavors">
+      <div class="flavor-card">
+        <img src="soft whipped.jpg" alt="Soft Whip Ice Cream">
+        <h3>Soft Whip Ice Cream</h3>
+        <p>Classic, creamy, and perfect in a cone or tub!</p>
+      </div>
+      <div class="flavor-card">
+        <img src="ice lollies.jpg" alt="Ice Lollies">
+        <h3>Ice Lollies</h3>
+        <p>Colourful, fruity, and perfect for sunny days.</p>
+      </div>
+      <div class="flavor-card">
+        <img src="hard-scoop-ice-cream.jpg" alt="Hard Scoop">
+        <h3>Hard Scoop Ice Cream</h3>
+        <p>Traditional hard scoops with indulgent flavours and textures.</p>
+      </div>
+      <div class="flavor-card">
+        <img src="lemon top.jpg" alt="Lemon-Topped">
+        <h3>Lemon-Topped</h3>
+        <p>The North East's favourite — tangy lemon sorbet over smooth vanilla.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="about">
+    <h2>Events & Occasions</h2>
+    <p>We bring flavour, fun, and freshness to events of all types!</p>
+    <ul class="events">
+      <li>
+        <img src="birthdays.PNG" alt="Birthday">
+        <div>
+          <strong>Birthday Parties:</strong>
+          Make your child's birthday unforgettable with our whimsical van, custom cones, and themed treats. We even play birthday songs!
+        </div>
+      </li>
+      <li>
+        <img src="weddings.PNG" alt="Wedding">
+        <div>
+          <strong>Weddings:</strong>
+          Add a charming, nostalgic touch to your big day. We serve delightful ice creams that double as unique wedding favours!
+        </div>
+      </li>
+      <li>
+        <img src="corporate.PNG" alt="Corporate">
+        <div>
+          <strong>Corporate Events:</strong>
+          Boost morale and brand reputation by offering employees or clients a delicious reward. Perfect for team-building days or customer promos.
+        </div>
+      </li>
+      <li>
+        <img src="festivals.PNG" alt="Community">
+        <div>
+          <strong>Community Events:</strong>
+          Whether it's school fairs, local galas, or summer festivals — we're the local favourite with something for everyone.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="phone" placeholder="Phone Number" />
+      <textarea name="message" rows="5" placeholder="Tell us about your event or enquiry" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div style="margin-top:30px; text-align:center;">
+      <p><strong>Visit Us:</strong> 118 Hewitson Road South, Darlington, England, UK</p>
+      <p><strong>Phone:</strong> <a href="tel:07455256919">07455 256919</a></p>
+      <p><strong>Email:</strong> <a href="mailto:info@nevisonssuperwhip.co.uk">info@nevisonssuperwhip.co.uk</a></p>
+    </div>
+  </section>
+
+  <section id="social-media" class="social">
+    <h2>Follow Us on Social Media</h2>
+    <p>See where we're scooping today and get your daily dose of sweetness!</p>
+    <p>
+      <a href="https://www.facebook.com/share/15ptL449GT/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://www.tiktok.com/@nevisonssuperwhip" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <img src="logo.png" alt="Nevison's Super Whip Logo" class="footer-logo">
+      <p>&copy; 2025 Nevison's Super Whip • Family-run since day one • Serving joy one scoop at a time</p>
+      <p>Professional ice cream catering for corporate events, summer festivals, and school fairs throughout Darlington</p>
+    </div>
+  </footer>
 
   <script>
     const toggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     toggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
+    });
+    
+    // Add smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
     });
   </script>
 
