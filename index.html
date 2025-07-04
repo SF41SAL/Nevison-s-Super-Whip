@@ -28,38 +28,57 @@
       line-height: 1.6;
     }
 
-    header {
-      background: url('bg-top.png') center center no-repeat;
-      background-size: contain;
-      color: white;
-      text-align: center;
-      padding: 180px 20px 100px;
-      position: relative;
+    /* Logo and top bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+      justify-content: space-between;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.2);
-      z-index: 0;
+    .top-bar img {
+      height: 60px;
+      width: auto;
     }
 
-    header h1, header p {
-      position: relative;
-      z-index: 1;
-      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 40px 40px;
+      background: #fff0f6;
     }
 
-    header h1 {
-      font-size: 3.2rem;
+    .hero-text {
+      flex: 1 1 400px;
+      padding-right: 30px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      color: var(--primary);
       margin-bottom: 15px;
     }
 
-    header p {
+    .hero-text p {
       font-size: 1.3rem;
     }
 
+    .hero-img {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-img img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Navigation */
     nav {
       background: var(--primary);
       color: white;
@@ -74,15 +93,7 @@
       width: 100%;
       max-width: 1100px;
       justify-content: center;
-      align-items: center;
       position: relative;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .logo {
-      height: 50px;
-      margin-right: 20px;
     }
 
     .nav-links {
@@ -157,7 +168,7 @@
     .flavor-card img {
       width: 100%;
       height: auto;
-      border-radius: 30px; /* Rounded like vertex site */
+      border-radius: 12px;
       margin-bottom: 15px;
     }
 
@@ -253,22 +264,18 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .about, .contact {
-        padding: 20px 15px;
+      .hero-text {
+        padding: 0 0 30px;
       }
 
-      #about {
-        margin-top: 60px;
-      }
-
-      header {
-        background-size: contain !important;
-        background-position: center;
+      .top-bar {
+        justify-content: center;
       }
 
       .menu-toggle {
@@ -298,32 +305,27 @@
         padding: 10px;
         margin: 0;
       }
-
-      .nav-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .logo {
-        margin: 0 auto 10px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      /* No changes */
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Nevison's Super Whip</h1>
-    <p>Family-run ice cream business serving smiles in Darlington!</p>
-  </header>
+  <div class="top-bar">
+    <img src="images/logo.png" alt="Logo">
+  </div>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Nevison's Super Whip</h1>
+      <p>Family-run ice cream business serving smiles in Darlington!</p>
+    </div>
+    <div class="hero-img">
+      <img src="bg-top.png" alt="Ice Cream Image">
+    </div>
+  </div>
 
   <nav>
     <div class="nav-container">
-      <img src="logo.png" alt="Logo" class="logo">
       <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
       <div class="nav-links" id="nav-links">
         <a href="#about">About Us</a>
